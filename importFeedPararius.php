@@ -102,20 +102,24 @@ foreach ($parsedXml->member->items->item as $item) {
     if (!is_dir('files/'.$uniqueobjectid)) {
         mkdir('files/'.$uniqueobjectid, 0777, TRUE);
     }
+    // get all files:
     $brochure = (isset($item->brochure)) ? $item->brochure : FALSE;
     if ($brochure) {
         // get brochure:
-        
+        getFile($brochure, 'files/'.$uniqueobjectid);
     }
     $plattegrond = (isset($item->plattegrond)) ? $item->plattegrond : FALSE;
     if ($plattegrond) {
         // get plattegrond:
-        
+        getFile($plattegrond, 'files/'.$uniqueobjectid);
     }
     $updatePhotos = (isset($item->updatePhotos)) ? $item->updatePhotos : 0;
+    if ($updatePhotos == 0)        continue;
     if (!isset($xml->photos))        continue;
     if (!isset($xml->photos->photo))        continue;
-    // get photo:
+    foreach ($xml->photos->photo as $photo) {
+        getFile($photo, 'files/'.$uniqueobjectid);
+    }
     
 }
 

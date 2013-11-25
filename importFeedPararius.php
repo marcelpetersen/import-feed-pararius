@@ -134,7 +134,7 @@ function getXml($url)
     
     return FALSE;
 }
-function getImage($url, $dir)
+function getFile($url, $dir)
 {
     $lfile = fopen($dir.'/'.basename($url), "w");
     

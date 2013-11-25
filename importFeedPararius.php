@@ -98,6 +98,10 @@ foreach ($parsedXml->member->items->item as $item) {
     $groundFloor = (isset($item->groundFloor)) ? $item->groundFloor : '';
     $floorQuality = (isset($item->floorQuality)) ? $item->floorQuality : '';
     $rentIncluded = (isset($item->rentIncluded)) ? $item->rentIncluded : '';
+    // if not exists make dir:
+    if (!is_dir('files/'.$uniqueobjectid)) {
+        mkdir('files/'.$uniqueobjectid, 0777, TRUE);
+    }
     $brochure = (isset($item->brochure)) ? $item->brochure : FALSE;
     if ($brochure) {
         // get brochure:

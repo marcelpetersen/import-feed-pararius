@@ -120,7 +120,21 @@ foreach ($parsedXml->member->items->item as $item) {
     foreach ($xml->photos->photo as $photo) {
         getFile($photo, 'files/'.$uniqueobjectid);
     }
-    
+    // set vars:
+    setVars($uniqueobjectid, $street, $houseNumber, $houseNumberAddtion,
+            $postalCode, $city, $SubArea, $houseType, $tenant, $estateOwner,
+            $stats, $furnished, $minprice, $hideprice, $NroOfRooms,
+            $NroOfLivingRooms, $Projectnaam, $WoningtypeInProject, $Available,
+            $insertDate, $description_nl, $description_fr, $description_en,
+            $description_de, $description_es, $description_it, $size_m2,
+            $numberOfBathrooms, $contractLentgh_months,
+            $minContractLentgh_months, $buildYear, $Parking, $bath,
+            $separateShower, $separateToilet, $lift, $garden, $gardenLigging,
+            $gardenSizeM2, $roofTerrass, $roofTerrassLigging, $roofTerrassSizeM2,
+            $balcony, $BalconyLigging, $BalconySizeM2, $swimmingPool,
+            $airConditioning, $firePlace, $garage, $cellar,
+            $publicTransportQualityID, $showhouseNumber, $groundFloor,
+            $floorQuality, $rentIncluded);
 }
 
 // functions:

@@ -99,26 +99,27 @@ foreach ($parsedXml->member->items->item as $item) {
     $floorQuality = (isset($item->floorQuality)) ? $item->floorQuality : '';
     $rentIncluded = (isset($item->rentIncluded)) ? $item->rentIncluded : '';
     // if not exists make dir:
-    if (!is_dir('files/'.$uniqueobjectid)) {
-        mkdir('files/'.$uniqueobjectid, 0777, TRUE);
+    $dir = 'files/'.$uniqueobjectid;
+    if (!is_dir($dir)) {
+        mkdir($dir, 0777, TRUE);
     }
     // get all files:
     $brochure = (isset($item->brochure)) ? $item->brochure : FALSE;
     if ($brochure) {
         // get brochure:
-        getFile($brochure, 'files/'.$uniqueobjectid);
+        getFile($brochure, $dir);
     }
     $plattegrond = (isset($item->plattegrond)) ? $item->plattegrond : FALSE;
     if ($plattegrond) {
         // get plattegrond:
-        getFile($plattegrond, 'files/'.$uniqueobjectid);
+        getFile($plattegrond, $dir);
     }
     $updatePhotos = (isset($item->updatePhotos)) ? $item->updatePhotos : 0;
     if ($updatePhotos == 0)        continue;
     if (!isset($xml->photos))        continue;
     if (!isset($xml->photos->photo))        continue;
     foreach ($xml->photos->photo as $photo) {
-        getFile($photo, 'files/'.$uniqueobjectid);
+        getFile($photo, $dir);
     }
     // set vars:
     setVars($uniqueobjectid, $street, $houseNumber, $houseNumberAddtion,
@@ -135,7 +136,8 @@ foreach ($parsedXml->member->items->item as $item) {
             $airConditioning, $firePlace, $garage, $cellar,
             $publicTransportQualityID, $showhouseNumber, $groundFloor,
             $floorQuality, $rentIncluded);
-}
+    
+} // end foreach list items.
 
 // functions:
 function getXml($url)

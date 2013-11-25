@@ -116,9 +116,9 @@ foreach ($parsedXml->member->items->item as $item) {
     }
     $updatePhotos = (isset($item->updatePhotos)) ? $item->updatePhotos : 0;
     if ($updatePhotos == 0)        continue;
-    if (!isset($xml->photos))        continue;
-    if (!isset($xml->photos->photo))        continue;
-    foreach ($xml->photos->photo as $photo) {
+    if (!isset($item->photos))        continue;
+    if (!isset($item->photos->photo))        continue;
+    foreach ($item->photos->photo as $photo) {
         getFile($photo, $dir);
     }
     // set vars:
